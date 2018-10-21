@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">	
+    <link href="css/style.css" rel="stylesheet">
 		
 </head>
 
-<body >
+<body>
 
 	<script type="text/javascript">
 		var products = [];
 		var cart = [];
+		
 
 		function addProduct() {
 			var productID = document.getElementById("productID").value;
@@ -122,12 +123,14 @@
 			ele.innerHTML = html;
 			
 			var sisa = 0;
-			sisa = parseInt(customer_money) - (TotalPrice);
+			sisa = parseInt(customer_money) - (TotalPrice) - parseInt(discount) ;
 			document.getElementById('demo5').innerHTML = sisa;
 			html += "</table>";
 			ele.innerHTML = html;
 		
 		}
+	
+
 
 		function subtractQuantity(product_id) {
 			for (var i = 0; i < cart.length; i++) {
@@ -159,6 +162,14 @@
 			}
 			renderCartTable();
 		}
+
+		var discount;
+		function promo(){
+		discount = document.getElementById("discount").value;
+		document.getElementById('demo6').innerHTML = discount;
+		html +="</table>";
+		ele.innerHTML = html;
+		}
 		
 		var customer_money;
 		function checkout(){
@@ -168,8 +179,6 @@
 			ele.innerHTML = html;
 		}
 		
-		
-		
 	</script>
 	<div class="title">
 	<h1 style="text-align:center"> <b> Cashier Checkout </b></h1>
@@ -177,6 +186,7 @@
 	
 	<div class="container">
 	<h4> Total Paid by Customer: </h4>
+	
 	<form name="money" id="money">
 		<table>
 			<tr>
@@ -188,12 +198,37 @@
 				</td>
 			</tr>
 		</table>
-		<input type="button" id="btnAddProduct" onclick="checkout();" value="Add Customer Money" >
+		<input type="button" id="btnAddProduct" onclick="checkout();" value="customer_money" >
 	</form>
 	<p> Total Paid by Customer: </p>
 	<p id="demo4"></p>	
+	
 	</div>
 	</div>
+	
+	<div class ="container">
+	<div class="col-xs-12">
+		
+	<h4> Discount </h4>
+	<form name="promos" id="promos">
+		<table>
+			<tr>
+				<td>
+					<label for="product"> Amount: </label>
+				</td>
+				<td>
+				<input id="discount" name="promos" type="text" size="28" required/>
+				</td>
+			</tr>
+		</table>
+		<input type="button" id="btnAddProduct" onclick="promo();" value="discount">
+	</form>
+	<p> Total Discount Amount: </p>
+	<p id="demo6"></p>
+	
+	</div>
+	</div>
+	
 	
 	<div class="container">
 	<h4> Add Products Sold </h4>  
@@ -258,7 +293,7 @@
 	<div class="container">
 	<div class="col-xs-12">
 
-	<h4> Price: </h4>
+	<h4> Price </h4>
 	<p> Total Price to be Paid: </p>
 	<p id="demo3"></p>
 	
