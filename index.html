@@ -50,7 +50,7 @@
 				html += "<td>" + products[i].product_name + "</td>";
 				html += "<td>" + products[i].product_quantity + "</td>";
 				html += "<td>" + products[i].product_price + "</td>";
-				html += "<td><button type='submit' onClick='deleteProduct(\"" + products[i].product_id + "\", 				this);'/>Delete Item</button> &nbsp <button type='submit' onClick='addCart(\"" + products[i].product_id 				+ "\", this);'/>Add to Cart</button></td>";
+				html += "<td><button type='submit'  style='background-color:white' onClick='deleteProduct(\"" + products[i].product_id + "\", 				this);'/>Delete Item</button> &nbsp <button type='submit' onClick='addCart(\"" + products[i].product_id 				+ "\", this);'/>Add to Cart</button></td>";
 				html += "</tr>";
 				}
 				
@@ -112,7 +112,7 @@
 				html += "<td>" + cart[i].product_quantity + "</td>";
 				html += "<td>" + cart[i].product.product_price + "</td>";
 				html += "<td>" + parseFloat(cart[i].product.product_price) * parseInt(cart[i].product_quantity) + "</td>";
-				html += "<td><button type='submit' onClick='subtractQuantity(\"" + cart[i].product.product_id + "\", 				this);'/>Subtract Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + 				cart[i].product.product_id + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' 				onClick='removeItem(\"" + cart[i].product.product_id + "\", this);'/>Remove Item</button></td>";
+				html += "<td><button type='submit'  style='background-color:white' onClick='subtractQuantity(\"" + cart[i].product.product_id + "\", 				this);'/>Subtract Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + 				cart[i].product.product_id + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' 				onClick='removeItem(\"" + cart[i].product.product_id + "\", this);'/>Remove Item</button></td>";
 				html += "</tr>";
 
 				TotalPrice += parseFloat(cart[i].product.product_price) * parseInt(cart[i].product_quantity);            
@@ -205,7 +205,7 @@
 				</td>
 			</tr>
 		</table>
-		<input type="button" id="btnAddProduct" onclick="checkout();" value="customer_money" >
+		<input type="button" id="btnAddProduct" onclick="checkout();" value="Add Money" >
 	</form>
 	<p> Total Paid by Customer: </p>
 	<p id="demo4"></p>	
@@ -228,7 +228,7 @@
 				</td>
 			</tr>
 		</table>
-		<input type="button" id="btnAddProduct" onclick="promo();" value="discount">
+		<input type="button" id="btnAddProduct" onclick="promo();" value="Add Discount">
 	</form>
 	<p> Total Discount Amount: </p>
 	<p id="demo6"></p>
