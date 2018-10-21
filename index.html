@@ -38,7 +38,7 @@
 
 			var html = "<table border='1|1' >";
 			html += "<td>Product ID</td>";
-			html += "<td>Product Description</td>";
+			html += "<td>Product Name:</td>";
 			html += "<td>Quantity</td>";
 			html += "<td>Price</td>";
 			html += "<td>Action</td>";
@@ -98,12 +98,11 @@
 
 			html += "<table id='tblCart' border='1|1'>";
 			html += "<tr><td>Product ID</td>";
-			html += "<td>Product Description</td>";
+			html += "<td>Product Name</td>";
 			html += "<td>Quantity</td>";
 			html += "<td>Price</td>";
 			html += "<td>Total</td>";
 			html += "<td>Action</td></tr>";
-			
 			var TotalPrice = 0;
 			for (var i = 0; i < cart.length; i++) {
 				html += "<tr>";
@@ -122,8 +121,9 @@
 			html += "</table>";
 			ele.innerHTML = html;
 			
-			
-			document.getElementById('demo5').innerHTML = parsefloat(customer_money) - TotalPrice;
+			var sisa = 0;
+			sisa = parseInt(customer_money) - (TotalPrice);
+			document.getElementById('demo5').innerHTML = sisa;
 			html += "</table>";
 			ele.innerHTML = html;
 		
@@ -172,11 +172,31 @@
 		
 	</script>
 	<div class="title">
-	<h1 style="text-align:center"> Cashier Program </h1>
+	<h1 style="text-align:center"> <b> Cashier Checkout </b></h1>
 	</div>
 	
 	<div class="container">
-	<h2> Add Products Sold </h2>  
+	<h4> Total Paid by Customer: </h4>
+	<form name="money" id="money">
+		<table>
+			<tr>
+				<td>
+					<label for="product"> Amount: </label>
+				</td>
+				<td>
+				<input id="customer_money" name="money" type="text" size="28" reqired/>
+				</td>
+			</tr>
+		</table>
+		<input type="button" id="btnAddProduct" onclick="checkout();" value="Add Customer Money" >
+	</form>
+	<p> Total Paid by Customer: </p>
+	<p id="demo4"></p>	
+	</div>
+	</div>
+	
+	<div class="container">
+	<h4> Add Products Sold </h4>  
 	<form name="order" id="order">
 		<table>
 			<tr>
@@ -189,7 +209,7 @@
 	        </tr>
 	        <tr>
 	            <td>
-	                <label for="product">Product Desc:</label>
+	                <label for="product">Product Name:</label>
 	            </td>
 	            <td>
 	                <input id="product_name" name="product" type="text" size="28" required/>
@@ -220,7 +240,7 @@
 	<div class="container">
 	<div class="col-xs-12">
 		
-	<h2> Product Lists </h2>
+	<h4> Product Lists </h4>
 	<p id="demo"> </p>
 	
 	</div>
@@ -229,46 +249,36 @@
 	<div class ="container">
 	<div class="col-xs-12">
 		
-	<h2> Shopping Cart </h2>
+	<h4> Shopping Cart </h4>
 	<p id="demo2"></p>
 	
 	</div>
 	</div>
 
+	<div class="container">
+	<div class="col-xs-12">
+
+	<h4> Price: </h4>
+	<p> Total Price to be Paid: </p>
+	<p id="demo3"></p>
+	
+	</div>
+	</div>
+	
+	<div class="container">
+	<div class="col-xs-12">
+	
+	<h4> Remainder </h4>
+	<p id="demo5"></p>
+	
+	</div>
+	</div>
 	
 	<div class="container">
 	<div class="col-xs-12">
 		
-	<h2> Check Out </h2> 
-	<h3> Total Price: </h3>
-	<p id="demo3"></p>
-	
-	<form name="money" id="money">
-		<table>
-			<tr>
-				<td>
-					<label for="product"> Customer Money: </label>
-				</td>
-				<td>
-				<input id="customer_money" name="money" type="text" size="28" reqired/>
-				</td>
-			</tr>
-		</table>
-		<input type="button" id="btnAddProduct" onclick="checkout();" value="Add Customer Money" >
-	</form>
-	
-	<h3> Total Paid: </h3>
-	<p id="demo4"></p>
-	
-	
-	</div>
-	</div>
-	
-	<div class="container">
-	<div class="col-xs-12">
-	
-	<h2> Remainder </h2>
-	<p id="demo5"></p>
+	<h4> Sample Input </h4>
+	<img src="img/sample.png" >
 	
 	</div>
 	</div>

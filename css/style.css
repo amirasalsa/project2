@@ -1,4 +1,24 @@
+body{
+	background: #7097e6;
+}
+
 *{
-	background-color: #99cccc;
-	font-family: "Arial", sans-serif;;
+	background-color: #afcaff;
+	font-family: "Arial", sans-serif;
+}
+
+.title{
+	padding-top:10pt;
+	padding-bottom:10pt;
+	margin-bottom:5pt;
+}
+
+.container{
+	padding-top: 10pt;
+	padding-bottom: 10pt;
+}
+
+
+.container .form .table{
+	border-color: white;
 }
