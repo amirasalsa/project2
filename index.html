@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<title> Cashier Checkout </title>
+	<title> Cashier Program </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
@@ -71,7 +71,7 @@
 				html += "<td>" + products[i].product_name + "</td>";
 				html += "<td>" + products[i].product_quantity + "</td>";
 				html += "<td>" + products[i].product_price + "</td>";
-				html += "<td><button type='submit'  style='background-color:white' onClick='deleteProduct(\"" + products[i].product_id + "\", 				this);'/>Delete Item</button> &nbsp <button type='submit' onClick='addCart(\"" + products[i].product_id 				+ "\", this);'/>Add to Cart</button></td>";
+				html += "<td><button type='submit' onClick='deleteProduct(\"" + products[i].product_id + "\", 				this);'/>Delete Item</button> &nbsp <button type='submit' onClick='addCart(\"" + products[i].product_id 				+ "\", this);'/>Add to Cart</button></td>";
 				html += "</tr>";
 				}
 				
@@ -133,7 +133,7 @@
 				html += "<td>" + cart[i].product_quantity + "</td>";
 				html += "<td>" + cart[i].product.product_price + "</td>";
 				html += "<td>" + parseFloat(cart[i].product.product_price) * parseInt(cart[i].product_quantity) + "</td>";
-				html += "<td><button type='submit'  style='background-color:white' onClick='subtractQuantity(\"" + cart[i].product.product_id + "\", 				this);'/>Subtract Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + 				cart[i].product.product_id + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' 				onClick='removeItem(\"" + cart[i].product.product_id + "\", this);'/>Remove Item</button></td>";
+				html += "<td><button type='submit' onClick='subtractQuantity(\"" + cart[i].product.product_id + "\", 				this);'/>Subtract Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + 				cart[i].product.product_id + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' 				onClick='removeItem(\"" + cart[i].product.product_id + "\", this);'/>Remove Item</button></td>";
 				html += "</tr>";
 
 				TotalPrice += (parseFloat(cart[i].product.product_price) * parseInt(cart[i].product_quantity));            
@@ -146,7 +146,7 @@
 			ele.innerHTML = html;
 			
 			var sisa = 0;
-			sisa = parseInt(customer_money) - (TotalPrice) + parseInt(discount) ;
+			sisa = parseInt(customer_money) - (TotalPrice);
 			document.getElementById('demo5').innerHTML = sisa;
 			html += "</table>";
 			ele.innerHTML = html;
@@ -202,7 +202,6 @@
 			ele.innerHTML = html;
 		}
 		
-<<<<<<< HEAD
 </script>
 
 <main role="main" class="container mt-5 mb-5">
@@ -233,24 +232,6 @@
 	<div>	
 	<h4> Discount </h4>
 	<form name="promos" id="promos">
-=======
-	</script>
-	<div class="title">
-	<h1 style="text-align:center"> <b> Cashier Checkout </b></h1>
-	</div>
-	
-	<div class="container">
-	<div class="col-xs-12">
-		<p> please fill in the inputs accordingly, results will show along </p>
-	</div>
-	</div>
-	
-	<div class="container">
-	<div class="col-xs-12">
-	<h4> Total Paid by Customer: </h4>
-	
-	<form name="money" id="money">
->>>>>>> e8a32388e4813971dffb1f3247c05ecb0c8d6860
 		<table>
 			<tr>
 				<td>
@@ -261,7 +242,6 @@
 				</td>
 			</tr>
 		</table>
-<<<<<<< HEAD
 		<input type="button" id="btnAddProduct" onclick="promo();" value="discount">
 		<br>Total Discount for Customer:
 		<p id="demo6"></p>
@@ -269,41 +249,6 @@
 	</div>
 	
 	<div>
-=======
-		<input type="button" id="btnAddProduct" onclick="checkout();" value="Add Money" >
-	</form>
-	<p> Total Paid by Customer: </p>
-	<p id="demo4"></p>	
-	
-	</div>
-	</div>
-	
-	<div class ="container">
-	<div class="col-xs-12">
-		
-	<h4> Discount </h4>
-	<form name="promos" id="promos">
-		<table>
-			<tr>
-				<td>
-					<label for="product"> Amount: </label>
-				</td>
-				<td>
-				<input id="discount" name="promos" type="text" size="28" required/>
-				</td>
-			</tr>
-		</table>
-		<input type="button" id="btnAddProduct" onclick="promo();" value="Add Discount">
-	</form>
-	<p> Total Discount Amount: </p>
-	<p id="demo6"></p>
-	
-	</div>
-	</div>
-	
-	
-	<div class="container">
->>>>>>> e8a32388e4813971dffb1f3247c05ecb0c8d6860
 	<h4> Add Products Sold </h4>  
 	<form name="order" id="order">
 		<table>
@@ -356,14 +301,9 @@
 	<p id="demo2"></p>
 	</div>
 
-<<<<<<< HEAD
 	<div>
 	<h4> Total Price </h4>
 	<p> Total Price to be Paid by Customer: </p>
-=======
-	<h4> Price </h4>
-	<p> Total Price to be Paid: </p>
->>>>>>> e8a32388e4813971dffb1f3247c05ecb0c8d6860
 	<p id="demo3"></p>
 	</div>
 
