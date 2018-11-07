@@ -1,20 +1,42 @@
 <html>
 
 <head>
-	<title> Cashier Program </title>
+	<title> Cashier Checkout </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-		
+    <link href="css/style.css" rel="stylesheet">	
 </head>
 
 <body>
 
-	<script type="text/javascript">
+<header class="site-header">
+	<nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top background-color:yellow">
+		<div class="container">
+			<a class="navbar-brand mr-4" href="/' %}"> Cahsier Program </a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarToggle">
+            	<div class="navbar-nav mr-auto">
+            		<a class="nav-item nav-link" href="">Home</a>
+					<a class="nav-item nav-link" href="">About Us </a>
+					<a class="nav-item nav-link" href="{% url 'blog-contact' %}">Contact Us</a>
+				</div>
+				<div class="navbar-nav">
+                	<a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                	<a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+            	</div>
+          	</div>
+        </div>
+	</nav>
+</header>
+
+<script type="text/javascript">
 		var products = [];
 		var cart = [];
+		
 
 		function addProduct() {
 			var productID = document.getElementById("productID").value;
@@ -49,7 +71,7 @@
 				html += "<td>" + products[i].product_name + "</td>";
 				html += "<td>" + products[i].product_quantity + "</td>";
 				html += "<td>" + products[i].product_price + "</td>";
-				html += "<td><button type='submit' onClick='deleteProduct(\"" + products[i].product_id + "\", 				this);'/>Delete Item</button> &nbsp <button type='submit' onClick='addCart(\"" + products[i].product_id 				+ "\", this);'/>Add to Cart</button></td>";
+				html += "<td><button type='submit'  style='background-color:white' onClick='deleteProduct(\"" + products[i].product_id + "\", 				this);'/>Delete Item</button> &nbsp <button type='submit' onClick='addCart(\"" + products[i].product_id 				+ "\", this);'/>Add to Cart</button></td>";
 				html += "</tr>";
 				}
 				
@@ -111,23 +133,27 @@
 				html += "<td>" + cart[i].product_quantity + "</td>";
 				html += "<td>" + cart[i].product.product_price + "</td>";
 				html += "<td>" + parseFloat(cart[i].product.product_price) * parseInt(cart[i].product_quantity) + "</td>";
-				html += "<td><button type='submit' onClick='subtractQuantity(\"" + cart[i].product.product_id + "\", 				this);'/>Subtract Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + 				cart[i].product.product_id + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' 				onClick='removeItem(\"" + cart[i].product.product_id + "\", this);'/>Remove Item</button></td>";
+				html += "<td><button type='submit'  style='background-color:white' onClick='subtractQuantity(\"" + cart[i].product.product_id + "\", 				this);'/>Subtract Quantity</button> &nbsp<button type='submit' onClick='addQuantity(\"" + 				cart[i].product.product_id + "\", this);'/>Add Quantity</button> &nbsp<button type='submit' 				onClick='removeItem(\"" + cart[i].product.product_id + "\", this);'/>Remove Item</button></td>";
 				html += "</tr>";
 
-				TotalPrice += parseFloat(cart[i].product.product_price) * parseInt(cart[i].product_quantity);            
+				TotalPrice += (parseFloat(cart[i].product.product_price) * parseInt(cart[i].product_quantity));            
 				}
+
+			TotalPrice = TotalPrice - parseInt(discount)
 				
 			document.getElementById('demo3').innerHTML = TotalPrice;
 			html += "</table>";
 			ele.innerHTML = html;
 			
 			var sisa = 0;
-			sisa = parseInt(customer_money) - (TotalPrice);
+			sisa = parseInt(customer_money) - (TotalPrice) + parseInt(discount) ;
 			document.getElementById('demo5').innerHTML = sisa;
 			html += "</table>";
 			ele.innerHTML = html;
 		
 		}
+	
+
 
 		function subtractQuantity(product_id) {
 			for (var i = 0; i < cart.length; i++) {
@@ -159,6 +185,14 @@
 			}
 			renderCartTable();
 		}
+
+		var discount;
+		function promo(){
+		discount = document.getElementById("discount").value;
+		document.getElementById('demo6').innerHTML = discount;
+		html +="</table>";
+		ele.innerHTML = html;
+		}
 		
 		var customer_money;
 		function checkout(){
@@ -168,34 +202,108 @@
 			ele.innerHTML = html;
 		}
 		
-		
-		
+<<<<<<< HEAD
+</script>
+
+<main role="main" class="container mt-5 mb-5">
+	<div class="row">
+	<div class="col-md-8">
+
+	<div class="content-section">
+
+	<div>
+	<h4> Total Paid </h4>
+	<form name="money" id="money">
+		<table>
+			<tr>
+				<td>
+					<label for="product"> Amount: </label>
+				</td> 
+				<td>
+				<input id="customer_money" name="money" type="text" size="28" required/>
+				</td>
+			</tr>
+		</table>
+		<input type="button" id="btnAddProduct" onclick="checkout();" value="customer_money">
+		<br>  Total Paid by Customer:
+		<p id="demo4"></p>
+	</form>
+	</div>
+	
+	<div>	
+	<h4> Discount </h4>
+	<form name="promos" id="promos">
+=======
 	</script>
 	<div class="title">
 	<h1 style="text-align:center"> <b> Cashier Checkout </b></h1>
 	</div>
 	
 	<div class="container">
+	<div class="col-xs-12">
+		<p> please fill in the inputs accordingly, results will show along </p>
+	</div>
+	</div>
+	
+	<div class="container">
+	<div class="col-xs-12">
 	<h4> Total Paid by Customer: </h4>
+	
 	<form name="money" id="money">
+>>>>>>> e8a32388e4813971dffb1f3247c05ecb0c8d6860
 		<table>
 			<tr>
 				<td>
 					<label for="product"> Amount: </label>
 				</td>
 				<td>
-				<input id="customer_money" name="money" type="text" size="28" reqired/>
+				<input id="discount" name="promos" type="text" size="28" required/>
 				</td>
 			</tr>
 		</table>
-		<input type="button" id="btnAddProduct" onclick="checkout();" value="Add Customer Money" >
+<<<<<<< HEAD
+		<input type="button" id="btnAddProduct" onclick="promo();" value="discount">
+		<br>Total Discount for Customer:
+		<p id="demo6"></p>
+	</form>
+	</div>
+	
+	<div>
+=======
+		<input type="button" id="btnAddProduct" onclick="checkout();" value="Add Money" >
 	</form>
 	<p> Total Paid by Customer: </p>
 	<p id="demo4"></p>	
+	
 	</div>
 	</div>
 	
+	<div class ="container">
+	<div class="col-xs-12">
+		
+	<h4> Discount </h4>
+	<form name="promos" id="promos">
+		<table>
+			<tr>
+				<td>
+					<label for="product"> Amount: </label>
+				</td>
+				<td>
+				<input id="discount" name="promos" type="text" size="28" required/>
+				</td>
+			</tr>
+		</table>
+		<input type="button" id="btnAddProduct" onclick="promo();" value="Add Discount">
+	</form>
+	<p> Total Discount Amount: </p>
+	<p id="demo6"></p>
+	
+	</div>
+	</div>
+	
+	
 	<div class="container">
+>>>>>>> e8a32388e4813971dffb1f3247c05ecb0c8d6860
 	<h4> Add Products Sold </h4>  
 	<form name="order" id="order">
 		<table>
@@ -237,51 +345,78 @@
 	</form>
 	</div>
 	
-	<div class="container">
-	<div class="col-xs-12">
 		
+	<div>
 	<h4> Product Lists </h4>
 	<p id="demo"> </p>
-	
-	</div>
 	</div>
 	
-	<div class ="container">
-	<div class="col-xs-12">
-		
+	<div>
 	<h4> Shopping Cart </h4>
 	<p id="demo2"></p>
-	
-	</div>
 	</div>
 
-	<div class="container">
-	<div class="col-xs-12">
-
-	<h4> Price: </h4>
+<<<<<<< HEAD
+	<div>
+	<h4> Total Price </h4>
+	<p> Total Price to be Paid by Customer: </p>
+=======
+	<h4> Price </h4>
 	<p> Total Price to be Paid: </p>
+>>>>>>> e8a32388e4813971dffb1f3247c05ecb0c8d6860
 	<p id="demo3"></p>
-	
 	</div>
-	</div>
-	
-	<div class="container">
-	<div class="col-xs-12">
-	
+
+	<div>
 	<h4> Remainder </h4>
-	<p id="demo5"></p>
+	<p> Total amount to give back to Customer: </p>
+	<p class="mt-1" id="demo5"></p>
+	</div>
+
+	</div>
+	</div>
+
+	  	<div class="col-md-4">
+          <div class="content-section">
+            <center> 
+            	<h5 class="mt-2 text-muted"> Note that: </h5>
+            	<p class="text-muted"> Fill in the input boxes one-by-one top down, and give the right amount of remainder to the customer. Thank you. </p>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Cashier Account</li>
+                <li class="list-group-item list-group-item-light">Help</li>
+                <li class="list-group-item list-group-item-light" style="color:#ff6666">Emergency Button</li>
+              </ul>
+           	</center>
+          </div>
+        </div>
+
+	</div>
+</main>
+
+<footer class="page-footer font-small teal pt-4" style="background-color:#5f788a">
+    <div class="container-fluid text-center text-md-left">
+      <div class="row" style="color:white">
+      <center>
+        <div class="col-md-6 mb-md-0 mb-3">
+          <h5 class="text-uppercase font-weight-bold">Subscribe to Our Newsletter</h5>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio deserunt fuga perferendis modi earum commodi aperiam temporibus quod nulla nesciunt aliquid debitis ullam omnis quos ipsam, aspernatur id excepturi hic.</p>
+          <div class="input-group mb-3 mt-3">
+            <input type="text" class="form-control" placeholder="Enter your e-mail" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append"> 
+               <span class="input-group-text" id="basic-addon2">Subscribe</span>
+            </div>
+          </div>
+          <p style="color:#cbd5db"> Become Our Partner | Advertising </p>
+        </div>
+      </center>
+      </div>
+    </div>
+
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="/" style="color:#cbd5db"> Cashier Program </a>
+    </div>
+  </footer>
 	
-	</div>
-	</div>
-	
-	<div class="container">
-	<div class="col-xs-12">
-		
-	<h4> Sample Input </h4>
-	<img src="img/sample.png" >
-	
-	</div>
-	</div>
 	
 </body>
 </html>
